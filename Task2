@@ -1,0 +1,67 @@
+import java.util.Scanner;
+
+public class StudentGradeTracker {
+
+    // Method to calculate the letter grade based on the average
+    public static String calculateLetterGrade(double average) {
+        if (average >= 90) {
+            return "A";
+        } else if (average >= 80) {
+            return "B";
+        } else if (average >= 70) {
+            return "C";
+        } else if (average >= 60) {
+            return "D";
+        } else {
+            return "F";
+        }
+    }
+
+    // Method to calculate the GPA based on the average
+    public static double calculateGPA(double average) {
+        if (average >= 90) {
+            return 4.0;
+        } else if (average >= 80) {
+            return 3.0;
+        } else if (average >= 70) {
+            return 2.0;
+        } else if (average >= 60) {
+            return 1.0;
+        } else {
+            return 0.0;
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the number of subjects/assignments: ");
+        int numSubjects = scanner.nextInt();
+        double[] grades = new double[numSubjects];
+
+        // Input grades for each subject/assignment
+        for (int i = 0; i < numSubjects; i++) {
+            System.out.print("Enter grade for subject/assignment " + (i + 1) + ": ");
+            grades[i] = scanner.nextDouble();
+        }
+
+        // Calculate the average grade
+        double total = 0;
+        for (int i = 0; i < numSubjects; i++) {
+            total += grades[i];
+        }
+        double average = total / numSubjects;
+
+        // Calculate the letter grade and GPA
+        String letterGrade = calculateLetterGrade(average);
+        double gpa = calculateGPA(average);
+
+        // Display the results
+        System.out.println("\nOverall Results:");
+        System.out.println("Average Grade: " + average);
+        System.out.println("Letter Grade: " + letterGrade);
+        System.out.println("GPA: " + gpa);
+
+        scanner.close();
+    }
+}
